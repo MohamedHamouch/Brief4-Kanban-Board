@@ -11,25 +11,38 @@
 <body>
     <header class="text-center pb-24">
         <img src="Images/Taskflow-logo.png" alt="Task flow logo" class="w-52">
-        <h1 class="text-blue-900 text-4xl font-semibold">Track Your Progress and Celebrate Success!</h1>
+        <h1 class="text-indigo-900 text-4xl font-semibold">Track Your Progress and Celebrate Success!</h1>
     </header>
     <main>
-        <form class="w-1/2 m-auto grid grid-cols-3 gap-y-10 gap-x-9">
-            <input type="text" name="title" placeholder="Give Your Task a Title" id="title" class="place-self-start w-full h-12 pl-2 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none">
-            <input type="date" name="date" id="date" class="w-full h-12 pl-2 place-self-end placeholder: text-gray-600 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
-            <select id="priority" name="priority" class="w-full h-12 pl-2 text-gray-800 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
-                <option value="0">Select Priority Level ...</option>
+        <button type="button"></button>
+        <button type="button"></button>
+        <form class="w-1/3 min-h-64 mx-auto mb-12 grid grid-cols-2 gap-y-10 gap-x-9">
+            <input type="text" name="title" placeholder="Give Your Task a Title" id="title" class="justify-self-start self-center w-full h-12 pl-2 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none">
+            <input type="date" name="date" id="date" class="w-full h-12 pl-2 justify-self-end self-center placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
+            <textarea name="description" id="description" placeholder="Give Your Task a Description" class="w-auto h-28 pl-2 pt-2 self-center col-span-2 resize-none text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none"></textarea>
+            <select id="priority" name="priority" class="w-full h-12 pl-2 self-center text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
+                <option value="" disabled selected>Select Priority Level ...</option>
                 <option value="1">Priority 1</option>
                 <option value="2">Priority 2</option>
                 <option value="3">Priority 3</option>
             </select>
-            <textarea name="description" id="description" placeholder="Give Your Task a Description" class="w-auto h-28 pl-2 pt-2 col-span-2 resize-none text-gray-800 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none"></textarea>
-            <div class="flex justify-evenly items-center">
-                <input type="submit" value="Submit" class="text-white bg-blue-800 w-1/3 h-1/2 rounded-md border border-solid border-teal-950 shadow shadow-teal-950 hover:opacity-75">
-                <input type="button" value="Submit" class="text-white bg-red-700 w-1/3 h-1/2 rounded-md border border-solid border-red-950 shadow shadow-teal-950 hover:opacity-75">
+            <div class="flex justify-around items-center">
+                <button type="button"  class="text-white bg-indigo-800 w-2/5 h-full rounded-md border border-solid border-teal-950 shadow shadow-teal-950 hover:opacity-75">add</button>
+                <button type="button" class="text-white bg-red-600 w-2/5 h-full rounded-md border border-solid border-red-950 shadow shadow-teal-950 hover:opacity-75">Cancel</button>
             </div>
-            
            </form>
+
+        <section class="grid grid-cols-3 w-3/4 h-96 mx-auto gap-10 justify-between text-center">
+            <div class="min-h-80  border-x-4 border-solid border-slate-400">
+                <p class="text-xl font-semibold bg-slate-200">To Do</p>
+            </div>
+            <div class="min-h-80 border-x-4 border-solid border-rose-400">
+                <p class="text-xl font-semibold bg-rose-100">In Progress</p>
+            </div>
+            <div class="min-h-80 border-x-4 border-solid border-teal-400">
+                <p class="text-xl font-semibold bg-teal-200">Done</p>
+            </div>
+        </section>
     </main>
 </body>
 </html>
