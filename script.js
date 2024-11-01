@@ -77,13 +77,18 @@ form.addEventListener("submit", (event) => {
     card.classList.add(borderColor);
     cardTitle.classList.add(bgColor);
 
-
     document.querySelector("#todoContainer").appendChild(card);
 
     //make delete button work
     deleteBtn.addEventListener("click", function () {
         card.remove();
     })
+
+    //make edit button work
+    editBtn.addEventListener("click", function () {
+        
+    });
+
 
     form.reset();
     document.querySelector("#formContainer").style.display = "none";
