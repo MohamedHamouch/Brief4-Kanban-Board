@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -35,23 +35,23 @@
         <!--Pop up window-form -->
         <section>
             <!-- background layer -->
-            <div id="formContainer"
-                class="w-full h-full absolute top-0 items-center bg-black/70 backdrop-blur-md hidden">
+            <div id="formContainer" class="w-full h-full items-center bg-black/70 backdrop-blur-md ">
+                <!--*** classes to add above!!!!! : hidden absolute top-0 ***-->
                 <!-- form input fields-->
-                <form
+                <form id="inputForm"
                     class="w-2/5 min-h-80 mx-auto mb-12 grid grid-cols-2 gap-y-10 gap-x-9 p-10  bg-slate-300 rounded-xl shadow-md shadow-gray-700">
 
                     <!-- task title input -->
                     <div class="justify-self-start self-center w-full">
                         <label for="title" class="hidden">Title</label>
-                        <input type="text" name="title" placeholder="Give Your Task a Title" id="title"
+                        <input type="text" name="title" placeholder="Give Your Task a Title" id="title" required
                             class="w-full h-12 pl-2 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none">
                     </div>
 
-                    <!-- task date input -->
+                    <!-- task deadline input -->
                     <div class="justify-self-end self-center w-full">
-                        <label for="date" class="hidden">Date</label>
-                        <input type="date" name="date" id="date"
+                        <label for="deadline" class="hidden">Deadline</label>
+                        <input type="date" name="deadline" id="deadline" required
                             class="w-full h-12 pl-2 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
                     </div>
 
@@ -59,24 +59,25 @@
                     <div class="w-auto h-28 self-center col-span-2">
                         <label for="description" class="hidden">Description</label>
                         <textarea name="description" id="description" placeholder="Give Your Task a Description"
+                            required
                             class="w-full h-28 pl-2 pt-2 resize-none text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none"></textarea>
                     </div>
 
                     <!-- input priority -->
                     <div class="w-full justify-self-start self-center">
                         <label for="priority" class="hidden"></label>
-                        <select id="priority" name="priority"
+                        <select id="priority" name="priority" required
                             class="w-full h-12 pl-2 self-center text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
                             <option value="" disabled selected>Select Priority Level ...</option>
-                            <option value="1">Priority 1</option>
-                            <option value="2">Priority 2</option>
-                            <option value="3">Priority 3</option>
+                            <option value="1">Priority 1 (Red)</option>
+                            <option value="2">Priority 2 (Orange)</option>
+                            <option value="3">Priority 3 (Green)</option>
                         </select>
                     </div>
 
                     <!-- add or cancel buttons -->
                     <div class="flex justify-around items-center">
-                        <button type="button"
+                        <button type="submit" id="submitBtn"
                             class="text-white font-semibold bg-sky-500 w-5/12 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Add</button>
                         <button type="button" id="cancelBtn"
                             class="text-white font-semibold bg-orange-600 w-5/12 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Cancel</button>
@@ -92,19 +93,17 @@
             <div class="border-x-4 border-solid border-slate-400">
                 <p class="text-xl font-semibold text-center bg-slate-400">To Do</p>
                 <ul>
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-red-500 min-h-52 p-1">
-                        <p class="bg-red-500 text-white text-lg text-center">Your Task title here</p>
+                    <li class="taskCard bg-stone-400 border-4 border-solid border-green-600 min-h-52 p-1">
+                        <p class="bg-green-600 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
                             Description Description Description</p>
                         <div class="flex items-center min-h-16 pt-6 w-full">
-                            <div class="flex justify-center gap-2 w-1/2 h-full">
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
-                            </div>
-                            <p class="text-xs font-medium">mm/dd/yyyy</p>
+                            <button type="button"
+                                class="h-9 w-16 mx-3 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
+                            <button type="button"
+                                class="h-9 w-16 mx-2 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
+                            <p class="text-xs font-medium mx-6">mm/dd/yyyy</p>
                         </div>
                     </li>
                 </ul>
@@ -112,10 +111,10 @@
 
             <!-- in progress caontainer -->
             <div class="min-h-80 border-x-4 border-solid border-rose-400">
-                <p class="text-xl font-semibold bg-rose-400">In Progress</p>
+                <p class="text-xl font-semibold text-center bg-rose-400">In Progress</p>
                 <ul>
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-red-500 min-h-52 p-1">
-                        <p class="bg-red-500 text-white text-lg text-center">Your Task title here</p>
+                    <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
+                        <p class="bg-red-600 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
                             Description Description Description</p>
@@ -133,11 +132,11 @@
             </div>
 
             <!-- done caontainer -->
-            <div class="min-h-80 border-x-4 border-solid border-teal-400">
+            <div class="min-h-80 border-x-4 text-center border-solid border-teal-400">
                 <p class="text-xl font-semibold bg-teal-400">Done</p>
                 <ul>
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-red-500 min-h-52 p-1">
-                        <p class="bg-red-500 text-white text-lg text-center">Your Task title here</p>
+                    <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
+                        <p class="bg-orange-500 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
                             Description Description Description</p>
