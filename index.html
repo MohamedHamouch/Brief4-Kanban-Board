@@ -35,7 +35,8 @@
         <!--Pop up window-form -->
         <section>
             <!-- background layer -->
-            <div id="formContainer" class="w-full h-full items-center bg-black/70 backdrop-blur-md hidden absolute top-0">
+            <div id="formContainer"
+                class="w-full h-full items-center bg-black/70 backdrop-blur-md hidden absolute top-0">
                 <!--*** classes to add above!!!!! : hidden absolute top-0 ***-->
                 <!-- form input fields-->
                 <form id="inputForm"
@@ -44,7 +45,7 @@
                     <!-- task title input -->
                     <div class="justify-self-start self-center w-full">
                         <label for="title" class="hidden">Title</label>
-                        <input type="text" name="title" placeholder="Give Your Task a Title" id="title" required
+                        <input type="text" name="title" id="title" placeholder="Give Your Task a Title" required
                             class="w-full h-12 pl-2 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none">
                     </div>
 
@@ -103,7 +104,7 @@
                                 class="h-9 w-16 mx-3 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
                             <button type="button"
                                 class="h-9 w-16 mx-2 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
-                            <p class="text-sm font-medium mx-6">mm/dd/yyyy</p>
+                            <p class="text-sm font-medium mx-6">yyyy/mm/dd</p>
                         </div>
                     </li>
                 </ul>
@@ -112,7 +113,7 @@
             <!-- in progress caontainer -->
             <div class="min-h-80 border-x-4 border-solid border-rose-400">
                 <p class="text-xl font-semibold text-center bg-rose-400">In Progress</p>
-                <ul>
+                <ul id="doingContainer">
                     <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
                         <p class="bg-red-600 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
@@ -134,7 +135,7 @@
             <!-- done caontainer -->
             <div class="min-h-80 border-x-4 text-center border-solid border-teal-400">
                 <p class="text-xl font-semibold bg-teal-400">Done</p>
-                <ul>
+                <ul id="doneContainer">
                     <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
                         <p class="bg-orange-500 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
@@ -151,6 +152,71 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </section>
+
+        <!-- pop up edit form -->
+        <section>
+            <!-- background layer -->
+            <div id="editContainer" class="w-full h-full items-center bg-black/70 backdrop-blur-md hidden absolute top-0">
+                <!-- form edit fields -->
+                <form id="editForm"
+                    class="w-2/5 min-h-80 mx-auto mb-12 grid grid-cols-2 gap-y-10 gap-x-9 p-10 bg-slate-300 rounded-xl shadow-md shadow-gray-700">
+
+                    <!-- task title edit -->
+                    <div class="justify-self-start self-center w-full">
+                        <label for="editTitle" class="hidden">Title</label>
+                        <input type="text" name="editTitle" id="editTitle" placeholder="Edit Task Title" required
+                            class="w-full h-12 pl-2 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none">
+                    </div>
+
+                    <!-- task deadline edit -->
+                    <div class="justify-self-end self-center w-full">
+                        <label for="editDeadline" class="hidden">Deadline</label>
+                        <input type="date" name="editDeadline" id="editDeadline" required
+                            class="w-full h-12 pl-2 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
+                    </div>
+
+                    <!-- task description edit -->
+                    <div class="w-auto h-28 self-center col-span-2">
+                        <label for="editDescription" class="hidden">Description</label>
+                        <textarea name="editDescription" id="editDescription" placeholder="Edit Task Description"
+                            required
+                            class="w-full h-28 pl-2 pt-2 resize-none text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow drop-shadow-md shadow-cyan-700 outline-none"></textarea>
+                    </div>
+
+                    <!-- edit priority -->
+                    <div class="w-full justify-self-start self-center">
+                        <label for="editPriority" class="hidden"></label>
+                        <select id="editPriority" name="editPriority" required
+                            class="w-full h-12 pl-2 self-center text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
+                            <option value="" disabled selected>Select Priority Level ...</option>
+                            <option value="1">Priority 1 (Red)</option>
+                            <option value="2">Priority 2 (Orange)</option>
+                            <option value="3">Priority 3 (Green)</option>
+                        </select>
+                    </div>
+
+                    <!-- edit status -->
+                    <div class="w-full justify-self-end self-center">
+                        <label for="editStatus" class="hidden"></label>
+                        <select id="editStatus" name="editStatus" required
+                            class="w-full h-12 pl-2 self-center text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
+                            <option value="" disabled selected>Select New Status ...</option>
+                            <option value="1">To Do</option>
+                            <option value="2">Doing</option>
+                            <option value="3">Done</option>
+                        </select>
+                    </div>
+
+                    <!-- confirm or cancel buttons -->
+                    <div class="flex justify-around items-center col-span-2 h-10">
+                        <button type="submit" id="confirmEditBtn"
+                            class="text-white font-semibold bg-sky-500 w-1/5 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Add</button>
+                        <button type="button" id="cancelEditBtn"
+                            class="text-white font-semibold bg-orange-600 w-1/5 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Cancel</button>
+                    </div>
+                </form>
             </div>
 
         </section>
