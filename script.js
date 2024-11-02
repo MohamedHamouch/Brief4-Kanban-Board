@@ -1,8 +1,8 @@
-document.querySelector("#addTaskBtn").addEventListener("click",function(){
+document.querySelector("#addTaskBtn").addEventListener("click", function () {
     document.querySelector("#formContainer").style.display = "flex";
 });
-document.querySelector("#cancelBtn").addEventListener("click",()=>{
-    document.querySelector("#formContainer").style.display = "none"
+document.querySelector("#cancelBtn").addEventListener("click", () => {
+    document.querySelector("#formContainer").style.display = "none";
 });
 
 const form = document.querySelector("#inputForm");
@@ -17,8 +17,7 @@ form.addEventListener("submit", (event) => {
 
     //create task cards
     const card = document.createElement("li");
-    card.className =
-        "taskCard bg-stone-400 border-4 border-solid min-h-52 p-1"; 
+    card.className = "taskCard bg-stone-400 border-4 border-solid min-h-52 p-1";
 
     const cardTitle = document.createElement("p");
     cardTitle.textContent = taskTitle.value;
@@ -56,42 +55,93 @@ form.addEventListener("submit", (event) => {
     card.appendChild(cardBottom);
 
     // adding priority color (li border/ title bg)
+    const cardPriority = taskPriority.value;
     let bgColor, borderColor;
-    switch (taskPriority.value) {
+    switch (cardPriority) {
         case "1":
-            borderColor = "border-red-600"
-            bgColor = "bg-red-600"; 
+            borderColor = "border-red-600";
+            bgColor = "bg-red-600";
             break;
         case "2":
-            borderColor = "border-orange-500"
+            borderColor = "border-orange-500";
             bgColor = "bg-orange-500";
             break;
         case "3":
-            borderColor = "border-green-600"
+            borderColor = "border-green-600";
             bgColor = "bg-green-600";
             break;
         default:
-            borderColor = "border-red-600"
-            bgColor = "bg-red-600"; 
+            borderColor = "border-red-600";
+            bgColor = "bg-red-600";
     }
     card.classList.add(borderColor);
     cardTitle.classList.add(bgColor);
 
     document.querySelector("#todoContainer").appendChild(card);
+    let cardStatus = "1";
 
     //make delete button work
     deleteBtn.addEventListener("click", function () {
         card.remove();
-    })
-
-    //make edit button work
-    editBtn.addEventListener("click", function () {
-        
     });
 
+    //make edit form show
+    editBtn.addEventListener("click", () => {
+        document.querySelector("#editContainer").style.display = "flex";
+    });
+    document.querySelector("#cancelEditBtn").addEventListener("click", () => {
+        document.querySelector("#editContainer").style.display = "none";
+    });
+
+    const editForm = document.querySelector("#editForm");
+    editForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const editTitle = document.querySelector("#editTitle");
+        const editDeadline = document.querySelector("#editDeadline");
+        const editDescription = document.querySelector("#editDescription");
+        const editPriority = document.querySelector("#editPriority");
+        const editStatus = document.querySelector("#editStatus");
+        const confirmEditBtn = document.querySelector("#confirmEditBtn");
+        const cancelEditBtn = document.querySelector("#cancelEditBtn");
+
+        cardTitle.textContent = editTitle.value;
+        cardDescription.textContent = editDescription.value;
+        cardDeadline.textContent = editDeadline.value;
+        cardPriority.value = editPriority.value;
+
+    switch (cardPriority) {
+        case "1":
+            borderColor = "border-red-600";
+            bgColor = "bg-red-600";
+            break;
+        case "2":
+            borderColor = "border-orange-500";
+            bgColor = "bg-orange-500";
+            break;
+        case "3":
+            borderColor = "border-green-600";
+            bgColor = "bg-green-600";
+            break;
+        default:
+            borderColor = "border-red-600";
+            bgColor = "bg-red-600";
+    }
+    card.classList.add(borderColor);
+    cardTitle.classList.add(bgColor);
+
+    if (cardStatus != editStatus.value){
+        cardStatus = editStatus.value
+       switch(cardStatus){
+
+       case "1": document.querySelector("#todoContainer").appendChild(card);
+       case "2": document.querySelector("#todoContainer").appendChild(card);
+      }
+    }
+
+
+    });
 
     form.reset();
     document.querySelector("#formContainer").style.display = "none";
-   
-
 });
