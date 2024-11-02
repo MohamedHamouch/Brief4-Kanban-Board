@@ -18,12 +18,12 @@
 <body class="bg-[linear-gradient(90deg,#C94A27,#1A7BBE)]">
     <header class="text-center">
         <img src="Images/Taskflow-logo.png" alt="Task flow logo" class="w-52">
-        <h1 class="text-cyan-400 text-4xl font-bold ">Track Your Progress and Celebrate Success!</h1>
+        <h1 class="text-cyan-400 text-3xl font-bold ">Track Your Progress and Celebrate Success!</h1>
     </header>
     <main class="">
 
         <!-- add buttons -->
-        <div class="flex justify-center items-center h-44 gap-32">
+        <div class="flex justify-center items-center h-36 gap-32">
             <button type="button" id="addTaskBtn"
                 class="text-white font-semibold text-lg bg-sky-500 w-44 h-14 rounded-md shadow shadow-teal-950 hover:opacity-75">+Add
                 Task</button>
@@ -88,10 +88,10 @@
         </section>
 
         <!-- cards display -->
-        <section class="grid grid-cols-3 w-3/4 h-[35rem] mx-auto gap-10 justify-between">
+        <section class="grid grid-cols-3 w-4/5 h-[31rem] mx-auto gap-10 justify-between">
 
             <!-- todo container -->
-            <div class="border-x-4 border-solid border-slate-400">
+            <div class="border-4 border-solid border-slate-400">
                 <p class="text-xl font-semibold text-center bg-slate-400">To Do</p>
                 <ul id="todoContainer">
                     <li class="taskCard bg-stone-400 border-4 border-solid border-green-600 min-h-52 p-1">
@@ -111,10 +111,10 @@
             </div>
 
             <!-- in progress caontainer -->
-            <div class="min-h-80 border-x-4 border-solid border-rose-400">
+            <div class="border-4 border-solid border-rose-400">
                 <p class="text-xl font-semibold text-center bg-rose-400">In Progress</p>
                 <ul id="doingContainer">
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
+                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
                         <p class="bg-red-600 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
@@ -128,15 +128,15 @@
                             </div>
                             <p class="text-sm font-medium mx-6">mm/dd/yyyy</p>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
             <!-- done caontainer -->
-            <div class="min-h-80 border-x-4 text-center border-solid border-teal-400">
+            <div class="border-4 text-center border-solid border-teal-400">
                 <p class="text-xl font-semibold bg-teal-400">Done</p>
                 <ul id="doneContainer">
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
+                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
                         <p class="bg-orange-500 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
@@ -150,7 +150,7 @@
                             </div>
                             <p class="text-sm font-medium mx-6">mm/dd/yyyy</p>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </section>
@@ -212,7 +212,7 @@
                     <!-- confirm or cancel buttons -->
                     <div class="flex justify-around items-center col-span-2 h-10">
                         <button type="submit" id="confirmEditBtn"
-                            class="text-white font-semibold bg-sky-500 w-1/5 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Add</button>
+                            class="text-white font-semibold bg-sky-500 w-1/5 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Confirm</button>
                         <button type="button" id="cancelEditBtn"
                             class="text-white font-semibold bg-orange-600 w-1/5 h-full rounded-md shadow shadow-teal-950 hover:opacity-75">Cancel</button>
                     </div>

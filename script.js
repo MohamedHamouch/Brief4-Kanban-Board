@@ -5,12 +5,12 @@ document.querySelector("#cancelBtn").addEventListener("click", () => {
     document.querySelector("#formContainer").style.display = "none";
 });
 
+// let cardBeingEdited = null;
 const form = document.querySelector("#inputForm");
 const taskTitle = document.querySelector("#title");
 const taskDeadline = document.querySelector("#deadline");
 const taskDescription = document.querySelector("#description");
 const taskPriority = document.querySelector("#priority");
-const submitBtn = document.querySelector("#submitBtn");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -29,7 +29,7 @@ form.addEventListener("submit", (event) => {
     cardDescription.className = "min-h-20 w-full pt-6";
     card.appendChild(cardDescription);
 
-    // creating buttons and date inside container
+    // creating buttons and date for task
     const cardBottom = document.createElement("div");
     cardBottom.className = "flex items-center min-h-16 pt-6 w-full";
 
@@ -55,7 +55,7 @@ form.addEventListener("submit", (event) => {
     card.appendChild(cardBottom);
 
     // adding priority color (li border/ title bg)
-    const cardPriority = taskPriority.value;
+    let cardPriority = taskPriority.value;
     let bgColor, borderColor;
     switch (cardPriority) {
         case "1":
@@ -70,15 +70,12 @@ form.addEventListener("submit", (event) => {
             borderColor = "border-green-600";
             bgColor = "bg-green-600";
             break;
-        default:
-            borderColor = "border-red-600";
-            bgColor = "bg-red-600";
     }
     card.classList.add(borderColor);
     cardTitle.classList.add(bgColor);
+    let cardStatus = "1";
 
     document.querySelector("#todoContainer").appendChild(card);
-    let cardStatus = "1";
 
     //make delete button work
     deleteBtn.addEventListener("click", function () {
@@ -88,58 +85,71 @@ form.addEventListener("submit", (event) => {
     //make edit form show
     editBtn.addEventListener("click", () => {
         document.querySelector("#editContainer").style.display = "flex";
+        cardBeingEdited = card;
+
+
+        document.querySelector("#editTitle").value = cardTitle.textContent;
+        document.querySelector("#editDeadline").value = cardDeadline.textContent;
+        document.querySelector("#editDescription").value = cardDescription.textContent;
+        document.querySelector("#editPriority").value = cardPriority;
+        document.querySelector("#editStatus").value = cardStatus;
+
+        //editing the tasks   
+        const editForm = document.querySelector("#editForm");
+
+        document.querySelector("#editForm").onsubmit = (event) => {
+            event.preventDefault();
+            // if (!cardBeingEdited) return;
+
+            const newTitle = document.querySelector("#editTitle").value;
+            const newDescription = document.querySelector("#editDescription").value;
+            const newDeadline = document.querySelector("#editDeadline").value;
+
+            cardTitle.textContent = newTitle;
+            cardDescription.textContent = newDescription;
+            cardDeadline.textContent = newDeadline;
+            cardPriority = document.querySelector("#editPriority").value;
+
+            card.classList.remove("border-red-600", "border-orange-500", "border-green-600");
+            cardTitle.classList.remove("bg-red-600", "bg-orange-500", "bg-green-600");
+
+            switch (cardPriority) {
+                case "1":
+                    borderColor = "border-red-600";
+                    bgColor = "bg-red-600";
+                    break;
+                case "2":
+                    borderColor = "border-orange-500";
+                    bgColor = "bg-orange-500";
+                    break;
+                case "3":
+                    borderColor = "border-green-600";
+                    bgColor = "bg-green-600";
+                    break;
+            }
+            card.classList.add(borderColor);
+            cardTitle.classList.add(bgColor);
+
+            if (cardStatus != editStatus.value) {
+                cardStatus = editStatus.value;
+                card.parentElement.removeChild(card);
+                switch (cardStatus) {
+                    case "1": document.querySelector("#todoContainer").appendChild(card);
+                        break;
+                    case "2": document.querySelector("#doingContainer").appendChild(card);
+                        break;
+                    case "3": document.querySelector("#doneContainer").appendChild(card);
+                        break;
+                }
+            }
+
+            document.querySelector("#editContainer").style.display = "none";
+        };
+
     });
+
     document.querySelector("#cancelEditBtn").addEventListener("click", () => {
         document.querySelector("#editContainer").style.display = "none";
-    });
-
-    const editForm = document.querySelector("#editForm");
-    editForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const editTitle = document.querySelector("#editTitle");
-        const editDeadline = document.querySelector("#editDeadline");
-        const editDescription = document.querySelector("#editDescription");
-        const editPriority = document.querySelector("#editPriority");
-        const editStatus = document.querySelector("#editStatus");
-        const confirmEditBtn = document.querySelector("#confirmEditBtn");
-        const cancelEditBtn = document.querySelector("#cancelEditBtn");
-
-        cardTitle.textContent = editTitle.value;
-        cardDescription.textContent = editDescription.value;
-        cardDeadline.textContent = editDeadline.value;
-        cardPriority.value = editPriority.value;
-
-    switch (cardPriority) {
-        case "1":
-            borderColor = "border-red-600";
-            bgColor = "bg-red-600";
-            break;
-        case "2":
-            borderColor = "border-orange-500";
-            bgColor = "bg-orange-500";
-            break;
-        case "3":
-            borderColor = "border-green-600";
-            bgColor = "bg-green-600";
-            break;
-        default:
-            borderColor = "border-red-600";
-            bgColor = "bg-red-600";
-    }
-    card.classList.add(borderColor);
-    cardTitle.classList.add(bgColor);
-
-    if (cardStatus != editStatus.value){
-        cardStatus = editStatus.value
-       switch(cardStatus){
-
-       case "1": document.querySelector("#todoContainer").appendChild(card);
-       case "2": document.querySelector("#todoContainer").appendChild(card);
-      }
-    }
-
-
     });
 
     form.reset();
