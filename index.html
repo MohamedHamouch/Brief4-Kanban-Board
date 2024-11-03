@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TaskFlow</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,14 +87,14 @@
             </div>
         </section>
 
-        <!-- cards display -->
-        <section class="grid grid-cols-3 w-4/5 h-[31rem] mx-auto gap-10 justify-between">
+         <!-- cards display -->
+         <section class="grid grid-cols-3 w-4/5 h-[31rem] mx-auto gap-10 justify-between">
 
             <!-- todo container -->
             <div class="border-4 border-solid border-slate-400">
-                <p class="text-xl font-semibold text-center bg-slate-400">To Do</p>
+                <p class="text-xl font-semibold text-center bg-slate-400">To Do (<span id="todoCount">0</span>)</p>
                 <ul id="todoContainer">
-                    <li class="taskCard bg-stone-400 border-4 border-solid border-green-600 min-h-52 p-1">
+                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-green-600 min-h-52 p-1">
                         <p class="bg-green-600 text-white text-lg text-center">Your Task title here</p>
                         <p class="min-h-20 w-full pt-6">Description Description Description Description Description
                             Description
@@ -106,13 +106,13 @@
                                 class="h-9 w-16 mx-2 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
                             <p class="text-sm font-medium mx-6">yyyy/mm/dd</p>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
 
-            <!-- in progress caontainer -->
+            <!-- Doing caontainer -->
             <div class="border-4 border-solid border-rose-400">
-                <p class="text-xl font-semibold text-center bg-rose-400">In Progress</p>
+                <p class="text-xl font-semibold text-center bg-rose-400">Doing (<span id="doingCount">0</span>)</p>
                 <ul id="doingContainer">
                     <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
                         <p class="bg-red-600 text-white text-lg text-center">Your Task title here</p>
@@ -134,7 +134,7 @@
 
             <!-- done caontainer -->
             <div class="border-4 text-center border-solid border-teal-400">
-                <p class="text-xl font-semibold bg-teal-400">Done</p>
+                <p class="text-xl font-semibold bg-teal-400">Done (<span id="doneCount">0</span>)</p>
                 <ul id="doneContainer">
                     <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
                         <p class="bg-orange-500 text-white text-lg text-center">Your Task title here</p>

@@ -5,7 +5,8 @@ document.querySelector("#cancelBtn").addEventListener("click", () => {
     document.querySelector("#formContainer").style.display = "none";
 });
 
-// let cardBeingEdited = null;
+let todoCount = 0, doingCount = 0, doneCount = 0;
+
 const form = document.querySelector("#inputForm");
 const taskTitle = document.querySelector("#title");
 const taskDeadline = document.querySelector("#deadline");
@@ -76,16 +77,18 @@ form.addEventListener("submit", (event) => {
     let cardStatus = "1";
 
     document.querySelector("#todoContainer").appendChild(card);
-
+    updateCount(cardStatus, 1)
+    
     //make delete button work
     deleteBtn.addEventListener("click", function () {
         card.remove();
+        updateCount(cardStatus, -1)
     });
 
     //make edit form show
     editBtn.addEventListener("click", () => {
         document.querySelector("#editContainer").style.display = "flex";
-        cardBeingEdited = card;
+        // cardBeingEdited = card;
 
 
         document.querySelector("#editTitle").value = cardTitle.textContent;
@@ -99,8 +102,6 @@ form.addEventListener("submit", (event) => {
 
         document.querySelector("#editForm").onsubmit = (event) => {
             event.preventDefault();
-            // if (!cardBeingEdited) return;
-
             const newTitle = document.querySelector("#editTitle").value;
             const newDescription = document.querySelector("#editDescription").value;
             const newDeadline = document.querySelector("#editDeadline").value;
@@ -130,10 +131,9 @@ form.addEventListener("submit", (event) => {
             card.classList.add(borderColor);
             cardTitle.classList.add(bgColor);
 
-            if (cardStatus != editStatus.value) {
-                cardStatus = editStatus.value;
-                card.parentElement.removeChild(card);
-                switch (cardStatus) {
+            const newStatus = document.querySelector("#editStatus").value;
+            if (cardStatus != newStatus) {
+                switch (newStatus) {
                     case "1": document.querySelector("#todoContainer").appendChild(card);
                         break;
                     case "2": document.querySelector("#doingContainer").appendChild(card);
@@ -141,8 +141,10 @@ form.addEventListener("submit", (event) => {
                     case "3": document.querySelector("#doneContainer").appendChild(card);
                         break;
                 }
+                updateCount(cardStatus, -1);
+                updateCount(newStatus, +1);
+                cardStatus = newStatus;
             }
-
             document.querySelector("#editContainer").style.display = "none";
         };
 
@@ -155,3 +157,17 @@ form.addEventListener("submit", (event) => {
     form.reset();
     document.querySelector("#formContainer").style.display = "none";
 });
+
+function updateCount(status, change) {
+    if (status === "1"){
+        todoCount += change;
+    } else if (status === "2"){
+        doingCount += change;
+    }
+    else if(status === "3"){
+         doneCount += change;
+    }
+    document.querySelector("#todoCount").innerText = todoCount;
+    document.querySelector("#doingCount").innerText = doingCount;
+    document.querySelector("#doneCount").innerText = doneCount;
+}
