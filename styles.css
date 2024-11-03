@@ -1,6 +1,6 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 * {
     box-sizing: border-box;
@@ -8,6 +8,25 @@
     margin: 0;
     font-family: Roboto;
 }
+
+button {
+    cursor: pointer;
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1; 
+    }
+  }
+
+#formContainer, #editContainer {
+    animation-name: popUp;
+    animation-duration: 0.4s;
+}
+
 @media screen and (max-width: 1280px) {
     :root {
         font-size: 0.79rem;
