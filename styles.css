@@ -8,3 +8,18 @@
     margin: 0;
     font-family: Roboto;
 }
+@media screen and (max-width: 1280px) {
+    :root {
+        font-size: 0.79rem;
+    }
+}
+@media screen and (max-width: 550px) {
+    :root {
+        font-size: 0.5rem;
+    }
+}
+@media screen and (max-width: 470px) {
+    :root {
+        font-size: 0.5rem;
+    }
+}
