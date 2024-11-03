@@ -8,13 +8,21 @@ document.querySelector("#cancelBtn").addEventListener("click", () => {
 let todoCount = 0, doingCount = 0, doneCount = 0;
 
 const form = document.querySelector("#inputForm");
-const taskTitle = document.querySelector("#title");
-const taskDeadline = document.querySelector("#deadline");
-const taskDescription = document.querySelector("#description");
-const taskPriority = document.querySelector("#priority");
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
+    const taskTitle = document.querySelector("#title");
+    const taskDeadline = document.querySelector("#deadline");
+    const taskDescription = document.querySelector("#description");
+    const taskPriority = document.querySelector("#priority");
+
+    const selectedDate = new Date(taskDeadline.value);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selectedDate < today) {
+        alert("Please select a date that is not in the past.");
+        return;
+    }
 
     //create task cards
     const card = document.createElement("li");
