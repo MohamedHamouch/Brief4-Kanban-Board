@@ -20,7 +20,7 @@ form.addEventListener("submit", (event) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     if (selectedDate < today) {
-        alert("Please select a date that is not in the past.");
+        alert("Please select a valid a date.");
         return;
     }
 
@@ -80,7 +80,7 @@ form.addEventListener("submit", (event) => {
             bgColor = "bg-green-600";
             break;
     }
-    
+
     card.classList.add(borderColor);
     cardTitle.classList.add(bgColor);
     let cardStatus = "1";
@@ -90,8 +90,11 @@ form.addEventListener("submit", (event) => {
 
     //make delete button work
     deleteBtn.addEventListener("click", function () {
-        card.remove();
-        updateCount(cardStatus, -1)
+        const confirmation = confirm("Are you sure you want to delete this task?");
+        if (confirmation) {
+            card.remove(); 
+            updateCount(cardStatus, -1);
+        }
     });
 
     //make edit form show
