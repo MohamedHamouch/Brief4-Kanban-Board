@@ -72,13 +72,14 @@ form.addEventListener("submit", (event) => {
             bgColor = "bg-green-600";
             break;
     }
+    
     card.classList.add(borderColor);
     cardTitle.classList.add(bgColor);
     let cardStatus = "1";
 
     document.querySelector("#todoContainer").appendChild(card);
     updateCount(cardStatus, 1)
-    
+
     //make delete button work
     deleteBtn.addEventListener("click", function () {
         card.remove();
@@ -88,8 +89,6 @@ form.addEventListener("submit", (event) => {
     //make edit form show
     editBtn.addEventListener("click", () => {
         document.querySelector("#editContainer").style.display = "flex";
-        // cardBeingEdited = card;
-
 
         document.querySelector("#editTitle").value = cardTitle.textContent;
         document.querySelector("#editDeadline").value = cardDeadline.textContent;
@@ -147,7 +146,6 @@ form.addEventListener("submit", (event) => {
             }
             document.querySelector("#editContainer").style.display = "none";
         };
-
     });
 
     document.querySelector("#cancelEditBtn").addEventListener("click", () => {
@@ -159,13 +157,13 @@ form.addEventListener("submit", (event) => {
 });
 
 function updateCount(status, change) {
-    if (status === "1"){
+    if (status === "1") {
         todoCount += change;
-    } else if (status === "2"){
+    } else if (status === "2") {
         doingCount += change;
     }
-    else if(status === "3"){
-         doneCount += change;
+    else if (status === "3") {
+        doneCount += change;
     }
     document.querySelector("#todoCount").innerText = todoCount;
     document.querySelector("#doingCount").innerText = doingCount;
