@@ -18,8 +18,10 @@ form.addEventListener("submit", (event) => {
 
     const selectedDate = new Date(taskDeadline.value);
     const today = new Date();
+    console.log(today)
+    const future = new Date ("2050-01-01");
     today.setHours(0, 0, 0, 0);
-    if (selectedDate < today) {
+    if (selectedDate < today || selectedDate > future) {
         alert("Please select a valid a date.");
         return;
     }
@@ -110,7 +112,7 @@ form.addEventListener("submit", (event) => {
         //editing the tasks   
         const editForm = document.querySelector("#editForm");
 
-        document.querySelector("#editForm").onsubmit = (event) => {
+        editForm.onsubmit = (event) => {
             event.preventDefault();
             const newTitle = document.querySelector("#editTitle").value;
             const newDescription = document.querySelector("#editDescription").value;
@@ -163,7 +165,7 @@ form.addEventListener("submit", (event) => {
         document.querySelector("#editContainer").style.display = "none";
     });
 
-    form.reset();
+    form.reset( );
     document.querySelector("#formContainer").style.display = "none";
 });
 

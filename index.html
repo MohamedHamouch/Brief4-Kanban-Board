@@ -35,7 +35,6 @@
             <!-- background layer -->
             <div id="formContainer"
                 class="w-full h-full items-center bg-black/50 backdrop-blur-md hidden absolute top-0">
-                <!--*** classes to add above!!!!! : hidden absolute top-0 ***-->
                 <!-- form input fields-->
                 <form id="inputForm"
                     class="text-base lg:text-base w-2/3 md:w-1/2 lg:w-2/5 min-h-[26rem] md:min-h-80 mx-auto grid grid-cols-2 gap-y-10 gap-x-9 p-10 bg-slate-300 rounded-xl shadow-md shadow-gray-700">
@@ -67,7 +66,7 @@
                         <select id="priority" name="priority" required
                             class="w-full h-12 pl-2 self-center text-gray-800 placeholder:text-slate-400 border border-solid border-sky-800 rounded-md shadow shadow-cyan-700 outline-none">
                             <option value="" disabled selected>Select Priority ...</option>
-                            <option value="1">Priority 1 (Red)</option>
+                            <option value="1" class="bg-red-500">Priority 1 (Red)</option>
                             <option value="2">Priority 2 (Orange)</option>
                             <option value="3">Priority 3 (Green)</option>
                         </select>
@@ -92,19 +91,6 @@
             <div class="border-4 border-solid border-slate-400 lg:overflow-y-auto">
                 <p class="text-xl font-semibold text-center bg-slate-400">To Do (<span id="todoCount">0</span>)</p>
                 <ul id="todoContainer" class="flex flex-col gap-y-2">
-                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-green-600 min-h-52 p-1">
-                        <p class="bg-green-600 text-white text-lg text-center">Your Task title here</p>
-                        <p class="min-h-20 w-full pt-6">Description Description Description Description Description
-                            Description
-                            Description Description Description</p>
-                        <div class="flex items-center min-h-16 pt-6 w-full">
-                            <button type="button"
-                                class="h-9 w-16 mx-3 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
-                            <button type="button"
-                                class="h-9 w-16 mx-2 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
-                            <p class="text-sm font-medium mx-6">yyyy/mm/dd</p>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
 
@@ -112,21 +98,6 @@
             <div class="border-4 border-solid border-rose-400 lg:overflow-y-auto">
                 <p class="text-xl font-semibold text-center bg-rose-400">Doing (<span id="doingCount">0</span>)</p>
                 <ul id="doingContainer" class="flex flex-col gap-y-2">
-                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-red-600 min-h-52 p-1">
-                        <p class="bg-red-600 text-white text-lg text-center">Your Task title here</p>
-                        <p class="min-h-20 w-full pt-6">Description Description Description Description Description
-                            Description
-                            Description Description Description</p>
-                        <div class="flex items-center min-h-16 pt-6 w-full">
-                            <div class="flex justify-center gap-2 w-1/2 h-full">
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
-                            </div>
-                            <p class="text-sm font-medium mx-6">mm/dd/yyyy</p>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
 
@@ -134,21 +105,6 @@
             <div class="border-4 border-solid border-teal-400 lg:overflow-y-auto">
                 <p class="text-xl font-semibold text-center bg-teal-400">Done (<span id="doneCount">0</span>)</p>
                 <ul id="doneContainer" class="flex flex-col gap-y-2">
-                    <!-- <li class="taskCard bg-stone-400 border-4 border-solid border-orange-500 min-h-52 p-1">
-                        <p class="bg-orange-500 text-white text-lg text-center">Your Task title here</p>
-                        <p class="min-h-20 w-full pt-6">Description Description Description Description Description
-                            Description
-                            Description Description Description</p>
-                        <div class="flex items-center min-h-16 pt-6 w-full">
-                            <div class="flex justify-center gap-2 w-1/2 h-full">
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-sky-500 rounded-md shadow shadow-teal-950 hover:opacity-75">Edit</button>
-                                <button type="button"
-                                    class="h-9 w-16 text-white text-sm font-medium bg-orange-600 rounded-md shadow shadow-teal-950 hover:opacity-75">Delete</button>
-                            </div>
-                            <p class="text-sm font-medium mx-6">mm/dd/yyyy</p>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
         </section>
